@@ -1,46 +1,19 @@
 <template>
         <div class="mian-left">
-        <ul class="nav-list flex gap-1 text-sm flex-wrap mt-1.5 mb-5">
+        <ul class="nav-list">
           <li>
-            <button
-              class="active flex items-center whitespace-nowrap rounded-lg px-2 bg-black text-white dark:bg-gray-800"
-            >
+            <button class="active" >
               Tasks
             </button>
           </li>
           <li>
-            <button
-              class="flex items-center whitespace-nowrap rounded-lg px-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-gray-900 dark:hover:text-gray-300"
-            >
-              Libraries
+            <button>
+              Models
             </button>
           </li>
           <li>
-            <button
-              class="flex items-center whitespace-nowrap rounded-lg px-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-gray-900 dark:hover:text-gray-300"
-            >
-              Datasets
-            </button>
-          </li>
-          <li>
-            <button
-              class="flex items-center whitespace-nowrap rounded-lg px-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-gray-900 dark:hover:text-gray-300"
-            >
-              Languages
-            </button>
-          </li>
-          <li>
-            <button
-              class="flex items-center whitespace-nowrap rounded-lg px-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-gray-900 dark:hover:text-gray-300"
-            >
-              Licenses
-            </button>
-          </li>
-          <li>
-            <button
-              class="flex items-center whitespace-nowrap rounded-lg px-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-gray-900 dark:hover:text-gray-300"
-            >
-              Other
+            <button>
+              Reports
             </button>
           </li>
         </ul>

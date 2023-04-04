@@ -2,13 +2,18 @@
   <div>
     <header>
       <div class="header-left">
-        <img
+        <!-- <img
           src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
           alt=""
+        /> -->
+        <img
+          src="@/assets/imgs/nio.jpeg"
+          alt=""
         />
-        <h1>Hugging Face</h1>
+        <h1>NIO Model DashBoard</h1>
+
         <div class="ipt-box">
-          <input type="text" placeholder="Search models, datasets, users..." />
+          <input type="text" placeholder="Search tasks,models,reports..." />
           <svg
             class="absolute left-2.5 text-gray-400 top-1/2 transform -translate-y-1/2"
             xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +34,7 @@
         </div>
       </div>
 
-      <ul class="header-right">
+      <!-- <ul class="header-right">
         <li>
           <a class="group flex items-center px-2 py-0.5 dark:hover:text-gray-400 hover:text-indigo-700"
             ><svg
@@ -106,7 +111,7 @@
             Datasets</a
           >
         </li>
-      </ul>
+      </ul> -->
     </header>
   </div>
 </template>
@@ -128,7 +133,7 @@ header {
     align-items: center;
     cursor: pointer;
     img {
-      width: 1.75rem;
+      width: 2.5rem;
     }
     h1 {
       font-size: 1.125rem;
@@ -156,6 +161,8 @@ header {
       }
     }
   }
+
+
   .header-right {
     margin-left: 6.25rem;
     display: flex;
