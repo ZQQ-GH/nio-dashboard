@@ -1,6 +1,7 @@
 <template>
         <div class="mian-left">
-        <ul class="nav-list">
+       
+          <!-- <ul class="nav-list">
           <li>
             <button class="active" >
               Tasks
@@ -16,6 +17,16 @@
               Reports
             </button>
           </li>
+        </ul> -->
+
+        <ul class="nav-list">
+          <li v-for="(nav,index) in navList" :key="index">
+            <button :class ="{active:nav.activete}" @click="navClick(index)">
+              {{ nav.label }}
+            </button>
+           
+          </li>
+          
         </ul>
 
         <div class="ipt-box">
@@ -38,7 +49,6 @@
           </svg>
           <input type="text" placeholder="Filter Tasks by name" />
         </div>
-
         <div class="Multimodal">
           <h3>Multimodal</h3>
           <div class="Multimodal-list">
@@ -87,7 +97,6 @@
             </div>
           </div>
         </div>
-
         <div class="Multimodal">
           <h3>Audio</h3>
           <div class="Multimodal-list">
@@ -120,7 +129,6 @@
             </div>
           </div>
         </div>
-
         <div class="Multimodal">
           <h3>Reinforcement Learning</h3>
           <div class="Multimodal-list">
@@ -137,6 +145,7 @@
             </div>
           </div>
         </div>
+
       </div>
 </template>
 
@@ -144,6 +153,13 @@
 export default {
     data() {
     return {
+
+      navList:[
+        {id:10,label:"Tasks",activete:true},
+        {id:20,label:"Models",activete:false},
+        {id:30,label:"Reports",activete:false},
+      ],
+
       MultimodalArr: [
         {
           text: "Feature Extraction",
@@ -303,6 +319,13 @@ export default {
       ],
     };
   },
+  methods:{
+    navClick(index){
+      // console.log(index)
+      this.navList.forEach((nav)=>{nav.activete =false})
+      this.navList[index].activete = true
+    },
+  }
 }
 </script>
 
