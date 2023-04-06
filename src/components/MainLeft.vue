@@ -1,23 +1,5 @@
 <template>
         <div class="mian-left">
-       
-          <!-- <ul class="nav-list">
-          <li>
-            <button class="active" >
-              Tasks
-            </button>
-          </li>
-          <li>
-            <button>
-              Models
-            </button>
-          </li>
-          <li>
-            <button>
-              Reports
-            </button>
-          </li>
-        </ul> -->
 
         <ul class="nav-list">
           <li v-for="(nav,index) in navList" :key="index">
@@ -47,104 +29,28 @@
               fill="currentColor"
             ></path>
           </svg>
-          <input type="text" placeholder="Filter Tasks by name" />
+          <input type="text" placeholder="Filter by name" />
         </div>
+
+
+
         <div class="Multimodal">
-          <h3>Multimodal</h3>
+          <h3></h3>
           <div class="Multimodal-list">
             <div
               class="Multimodal-list-item"
-              v-for="(v, i) in MultimodalArr"
-              :key="i"
+              v-for="(v, i) in taskList"
+              :key="i" v-show="v.navindex==navIndex"
             >
               <div class="img-box">
-                <img :src="v.url" alt="" />
+                <img :src="v.imgurl" alt="" />
               </div>
 
               <span>{{ v.text }}</span>
             </div>
           </div>
         </div>
-        <div class="Multimodal">
-          <h3>Computer Vision</h3>
-          <div class="Multimodal-list">
-            <div
-              class="Multimodal-list-item"
-              v-for="(v, i) in ComputerVisionArr"
-              :key="i"
-            >
-              <div class="img-box">
-                <img :src="v.url" alt="" />
-              </div>
 
-              <span>{{ v.text }}</span>
-            </div>
-          </div>
-        </div>
-        <div class="Multimodal">
-          <h3>Natural Language Processing</h3>
-          <div class="Multimodal-list">
-            <div
-              class="Multimodal-list-item"
-              v-for="(v, i) in NaturalLanguageProcessingArr"
-              :key="i"
-            >
-              <div class="img-box">
-                <img :src="v.url" alt="" />
-              </div>
-
-              <span>{{ v.text }}</span>
-            </div>
-          </div>
-        </div>
-        <div class="Multimodal">
-          <h3>Audio</h3>
-          <div class="Multimodal-list">
-            <div
-              class="Multimodal-list-item"
-              v-for="(v, i) in AudioArr"
-              :key="i"
-            >
-              <div class="img-box">
-                <img :src="v.url" alt="" />
-              </div>
-
-              <span>{{ v.text }}</span>
-            </div>
-          </div>
-        </div>
-        <div class="Multimodal">
-          <h3>Tabular</h3>
-          <div class="Multimodal-list">
-            <div
-              class="Multimodal-list-item"
-              v-for="(v, i) in TabularArr"
-              :key="i"
-            >
-              <div class="img-box">
-                <img :src="v.url" alt="" />
-              </div>
-
-              <span>{{ v.text }}</span>
-            </div>
-          </div>
-        </div>
-        <div class="Multimodal">
-          <h3>Reinforcement Learning</h3>
-          <div class="Multimodal-list">
-            <div
-              class="Multimodal-list-item"
-              v-for="(v, i) in ReinforcementLearningArr"
-              :key="i"
-            >
-              <div class="img-box">
-                <img :src="v.url" alt="" />
-              </div>
-
-              <span>{{ v.text }}</span>
-            </div>
-          </div>
-        </div>
 
       </div>
 </template>
@@ -153,170 +59,46 @@
 export default {
     data() {
     return {
-
+      navIndex : 0,
       navList:[
         {id:10,label:"Tasks",activete:true},
-        {id:20,label:"Models",activete:false},
-        {id:30,label:"Reports",activete:false},
+        {id:20,label:"Libraries",activete:false},
+        {id:30,label:"Datasets",activete:false},
       ],
 
-      MultimodalArr: [
+      taskList:[
         {
-          text: "Feature Extraction",
-          url: require("../assets/imgs/Multimodal-1.png"),
+          id:10,
+          navindex:0,
+          text: "铜排拉弧",
+          imgurl: require("../assets/imgs/task1.png"),
         },
         {
-          text: "Text-to-Image",
-          url: require("../assets/imgs/Multimodal-1.png"),
+          id:10,
+          navindex:0,
+          text: "旋变",
+          imgurl: require("../assets/imgs/task1.png"),
         },
         {
-          text: "Image-to-Text",
-          url: require("../assets/imgs/Multimodal-1.png"),
+          id:10,
+          navindex:0,
+          text: "车辆寿命预估",
+          imgurl: require("../assets/imgs/task.png"),
         },
         {
-          text: "Text-to-Video",
-          url: require("../assets/imgs/Multimodal-1.png"),
+          id:10,
+          navindex:1,
+          text: "PyTorch",
+          imgurl: require("../assets/imgs/pytorch.png"),
         },
         {
-          text: "Visual Question Answering",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Document Question Answering",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Graph Machine Learning",
-          url: require("../assets/imgs/m-2.png"),
-        },
-      ],
-      ComputerVisionArr: [
-        {
-          text: "Depth Estimation",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Image Classification",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Object Detection",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Image Segmentation",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Image-to-Image",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Unconditional Image Generation",
-          url: require("../assets/imgs/m-8.png"),
-        },
-        {
-          text: "Video Classification",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Zero-Shot Image Classification",
-          url: require("../assets/imgs/Multimodal-1.png"),
+          id:10,
+          navindex:1,
+          text: "TensorFlow",
+          imgurl: require("../assets/imgs/tensorflow.png"),
         },
       ],
-      NaturalLanguageProcessingArr: [
-        {
-          text: "Text Classification",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Token Classification",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Table Question Answering",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Question Answering",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Zero-Shot Classification",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Translation",
-          url: require("../assets/imgs/m-6.png"),
-        },
-        {
-          text: "Summarization",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Conversational",
-          url: require("../assets/imgs/m-7.png"),
-        },
-        {
-          text: "Text Generation",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Text2Text Generation",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Fill-Mask",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Sentence Similarity",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-      ],
-      AudioArr: [
-        {
-          text: "Text-to-Speech",
-          url: require("../assets/imgs/m-5.png"),
-        },
-        {
-          text: "Automatic Speech Recognition",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Audio-to-Audio",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Audio Classification",
-          url: require("../assets/imgs/mg-4.png"),
-        },
-        {
-          text: "Voice Activity Detection",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-      ],
-      TabularArr: [
-        {
-          text: "Tabular Classification",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Tabular Regression",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-      ],
-
-      ReinforcementLearningArr: [
-        {
-          text: "Reinforcement Learning",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-        {
-          text: "Robotics",
-          url: require("../assets/imgs/Multimodal-1.png"),
-        },
-      ],
+      
     };
   },
   methods:{
@@ -324,6 +106,8 @@ export default {
       // console.log(index)
       this.navList.forEach((nav)=>{nav.activete =false})
       this.navList[index].activete = true
+      this.navIndex = index
+
     },
   }
 }
@@ -342,11 +126,15 @@ export default {
         flex-wrap: wrap;
         button {
           padding: 0.1875rem 0.3125rem;
-          border-radius: 0.625rem;
           background-color: #fafbfc;
-          font-size: 1rem;
+          font-size: 100%;
           margin: 0 0.3125rem 0.3125rem 0;
           cursor: pointer;
+          --tw-text-opacity: 1;
+          color: rgb(107 114 128/var(--tw-text-opacity));
+          border-radius: 0.5rem;
+          white-space: nowrap;
+
           &.active {
             background-color: #000;
             color: #fff;
@@ -402,9 +190,9 @@ export default {
               background-color: #f3f3f3;
             }
             .img-box {
-              width: 1.875rem;
+              width: 1.475rem;
               height: 100%;
-              margin-right: 0.3125rem;
+              // margin-right: 0.3125rem;
               border-top-left-radius: 00.625rem;
               border-bottom-left-radius: 00.625rem;
               display: flex;
@@ -412,12 +200,14 @@ export default {
               justify-content: center;
 
               img {
-                width: 0.9375rem;
-                height: 0.9375rem;
+                width: 0.8975rem;
+                height: 0.8975rem;
               }
             }
             span {
-              font-size: 0.75rem;
+              font-size: 0.4rem;
+              padding-right: 0.1rem;
+              padding-bottom: 0.1rem;
             }
           }
         }
