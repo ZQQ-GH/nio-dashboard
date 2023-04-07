@@ -10,7 +10,10 @@ export default new VueRouter({
     routes: [
         {
             path: '/',
-            component: Home
+            component: Home,
+            meta: {
+                title: 'Home',
+              }
         },
 
     ]

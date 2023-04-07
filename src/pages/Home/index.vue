@@ -32,7 +32,8 @@ export default {
 <style lang="scss" scoped>
 .index {
   height: 100%;
-  width: 70%;
+  width: 85rem;
+  max-width: 100%;
   margin: 0 auto;
 
   main {
