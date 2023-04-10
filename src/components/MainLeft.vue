@@ -34,7 +34,9 @@
           class="Multimodal-list-item"
           v-for="(v, i) in taskList"
           :key="i"
-          v-show="v.navindex==navIndex"
+          v-show="v.navindex==navindex"
+          :class="{itemgrey:!v.selected}"
+          @click="taskclick(v)"
         >
           <div class="img-box">
             <img :src="v.imgurl" alt />
@@ -49,9 +51,33 @@
 
 <script>
 export default {
+  created() {
+    var url = "http://localhost:8090/getallprojects";
+    this.axios
+      .get(url)
+      .then(res => {
+        // console.log(res);
+        var task = res.data;
+        const taskArray = task.map(({ id, name }) => {
+          var imgurl = require("../assets/imgs/task1.png")
+          if(name.indexOf("预估") != -1) imgurl = require("../assets/imgs/task.png")
+          return {
+            id,
+            text: name,
+            navindex: 0,
+            imgurl,
+            selected:true
+          };
+        });
+        this.taskList = this.taskList.concat(taskArray);
+
+      })
+      .catch(error => console.log(error));
+  },
+
   data() {
     return {
-      navIndex: 0,
+      navindex: 0,
       navList: [
         { id: 10, label: "Tasks", activete: true },
         { id: 20, label: "Libraries", activete: false },
@@ -63,31 +89,36 @@ export default {
           id: 10,
           navindex: 0,
           text: "铜排拉弧",
-          imgurl: require("../assets/imgs/task1.png")
+          imgurl: require("../assets/imgs/task1.png"),
+          selected:true
         },
         {
           id: 10,
           navindex: 0,
           text: "旋变",
-          imgurl: require("../assets/imgs/task1.png")
+          imgurl: require("../assets/imgs/task1.png"),
+          selected:true
         },
         {
           id: 10,
           navindex: 0,
           text: "车辆寿命预估",
-          imgurl: require("../assets/imgs/task.png")
+          imgurl: require("../assets/imgs/task.png"),
+          selected:true
         },
         {
           id: 10,
           navindex: 1,
           text: "PyTorch",
-          imgurl: require("../assets/imgs/pytorch.png")
+          imgurl: require("../assets/imgs/pytorch.png"),
+          selected:true
         },
         {
           id: 10,
           navindex: 1,
           text: "TensorFlow",
-          imgurl: require("../assets/imgs/tensorflow.png")
+          imgurl: require("../assets/imgs/tensorflow.png"),
+          selected:true
         }
       ]
     };
@@ -99,7 +130,21 @@ export default {
         nav.activete = false;
       });
       this.navList[index].activete = true;
-      this.navIndex = index;
+      this.navindex = index;
+    },
+    taskclick(task){
+      this.taskList.forEach(task1 => {
+        if(task1.navindex == this.navindex){
+          task1.selected = false;
+        }else{
+          task1.selected = true;
+        }
+      });
+      task.selected = true;
+
+
+      this.$bus.$emit('hello',123)
+  
     }
   }
 };
@@ -201,6 +246,12 @@ export default {
           padding-right: 0.1rem;
           padding-bottom: 0.1rem;
         }
+
+      }
+
+      .itemgrey{
+        filter: grayscale(100%);
+        opacity: .5;
       }
     }
   }

@@ -52,7 +52,7 @@
       </div>-->
     </div>
 
-    <el-row :gutter="30" :type="flex">
+    <el-row :gutter="30" >
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="12" v-for="(v, i) in modelsArr" :key="i">
         <div class="grid-content">
           <div class="name">
@@ -96,6 +96,9 @@
 
 <script>
 export default {
+  mounted(){
+    this.$bus.$on('hello',this.demo)
+  },
   data() {
     return {
       modelsArr: [
@@ -125,6 +128,11 @@ export default {
   computed: {
       modelCnt() {
         return this.modelsArr.length;
+      }
+    },
+    methods:{
+      demo(data){
+        console.log("right"+data)
       }
     }
 };
