@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import Home from '@/pages/Home'
-
+import vuextest from '@/components/vuextest.vue'
 
 export default new VueRouter({
     routes: [
@@ -13,6 +13,13 @@ export default new VueRouter({
             component: Home,
             meta: {
                 title: 'Home',
+              }
+        },
+        {
+            path: '/test',
+            component: vuextest,
+            meta: {
+                title: 'vuextest',
               }
         },
 
