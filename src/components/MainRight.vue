@@ -53,10 +53,11 @@
     </div>
 
     <el-row :gutter="30" >
-      <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="12" v-for="(v, i) in modelsArr" :key="i">
-        <div class="grid-content">
+      <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="12" v-for="(v, i) in modelsshow" :key="i">
+        <a :href="v.url==''?'#':v.url" :target="v.url==''?'_self':'_blank'">
+        <div class="grid-content" >
           <div class="name">
-            <h5>{{ v.title }}</h5>
+            <h5>{{ v.name }}</h5>
           </div>
 
           <div class="info">
@@ -72,6 +73,7 @@
                 height="1em"
                 preserveAspectRatio="xMidYMid meet"
                 viewBox="0 0 18 19"
+                v-show="v.isonline"
               >
                 <path
                   d="M12.3625 13.85H10.1875V12.7625H12.3625V10.5875H13.45V12.7625C13.4497 13.0508 13.335 13.3272 13.1312 13.5311C12.9273 13.735 12.6508 13.8497 12.3625 13.85V13.85Z"
@@ -83,56 +85,62 @@
                   d="M15.625 5.14998H13.45V2.97498C13.4497 2.68665 13.335 2.4102 13.1312 2.20632C12.9273 2.00244 12.6508 1.88777 12.3625 1.88748H2.575C2.28666 1.88777 2.01022 2.00244 1.80633 2.20632C1.60245 2.4102 1.48778 2.68665 1.4875 2.97498V12.7625C1.48778 13.0508 1.60245 13.3273 1.80633 13.5311C2.01022 13.735 2.28666 13.8497 2.575 13.85H4.75V16.025C4.75028 16.3133 4.86495 16.5898 5.06883 16.7936C5.27272 16.9975 5.54916 17.1122 5.8375 17.1125H15.625C15.9133 17.1122 16.1898 16.9975 16.3937 16.7936C16.5975 16.5898 16.7122 16.3133 16.7125 16.025V6.23748C16.7122 5.94915 16.5975 5.6727 16.3937 5.46882C16.1898 5.26494 15.9133 5.15027 15.625 5.14998V5.14998ZM15.625 16.025H5.8375V13.85H8.0125V12.7625H5.8375V10.5875H4.75V12.7625H2.575V2.97498H12.3625V5.14998H10.1875V6.23748H12.3625V8.41248H13.45V6.23748H15.625V16.025Z"
                 />
               </svg>
-
-            <span>Updated</span>
-            <span>{{ v.Updated }}</span>
-            <span>{{ v.author }}</span>
+              <svg v-show="!v.isonline" class="flex-none w-3 text-gray-400 mr-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 12 12"><path d="M6 9.75828C4.86056 9.75828 3.81948 9.45144 2.87678 8.83776C1.93407 8.22373 1.22089 7.39474 0.737243 6.35077C0.712651 6.30901 0.696256 6.25673 0.688059 6.19393C0.679861 6.13146 0.675763 6.06681 0.675763 6C0.675763 5.93319 0.679861 5.86838 0.688059 5.80557C0.696256 5.7431 0.712651 5.69098 0.737243 5.64923C1.22089 4.60526 1.93407 3.77643 2.87678 3.16274C3.81948 2.54872 4.86056 2.24171 6 2.24171C7.13944 2.24171 8.18052 2.54872 9.12323 3.16274C10.0659 3.77643 10.7791 4.60526 11.2628 5.64923C11.2873 5.69098 11.3037 5.7431 11.3119 5.80557C11.3201 5.86838 11.3242 5.93319 11.3242 6C11.3242 6.06681 11.3201 6.13146 11.3119 6.19393C11.3037 6.25673 11.2873 6.30901 11.2628 6.35077C10.7791 7.39474 10.0659 8.22373 9.12323 8.83776C8.18052 9.45144 7.13944 9.75828 6 9.75828ZM6 8.75608C6.92631 8.75608 7.77688 8.50753 8.5517 8.01043C9.32619 7.51367 9.91838 6.84353 10.3282 6C9.91838 5.15647 9.32619 4.48616 8.5517 3.98907C7.77688 3.4923 6.92631 3.24392 6 3.24392C5.07369 3.24392 4.22312 3.4923 3.4483 3.98907C2.67381 4.48616 2.08162 5.15647 1.67175 6C2.08162 6.84353 2.67381 7.51367 3.4483 8.01043C4.22312 8.50753 5.07369 8.75608 6 8.75608Z" fill="currentColor"></path><path d="M7.80933 5.92992C7.80933 6.51092 7.53544 7.02796 7.10973 7.35894C6.80337 7.59714 6.41838 6.98403 6.00027 6.98403C5.58215 6.98403 5.19716 7.59714 4.8908 7.35894C4.46509 7.02796 4.1912 6.51092 4.1912 5.92992C4.1912 4.9308 5.00115 4.12086 6.00027 4.12086C6.99939 4.12086 7.80933 4.9308 7.80933 5.92992Z" fill="currentColor"></path></svg>
+            <span>{{v.isonline?'Online':'Preview'}}</span>
+            <span>{{ v.developer }}</span>
           </div>
         </div>
+      </a>
+
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
+
 export default {
   mounted(){
-    this.$bus.$on('hello',this.demo)
+    this.$bus.$on('filtermodel',this.filtermodel)
   },
+  created() {
+
+    var url = "/getallmodels";
+    this.axios
+      .get(url)
+      .then(res => {
+        // console.log(res);
+        var modeldata = res.data;
+        this.modelsArr = this.modelsArr.concat(modeldata);
+        this.modelsArr.sort(t=>t.id)
+        this.modelsshow = this.modelsArr
+      })
+      .catch(error => console.log(error));
+  },
+
+
   data() {
     return {
       modelsArr: [
-        {
-          title: "bert-base-uncased",
-          Updated: "Nov 16, 2022",
-          author: "hao.wei"
-        },
-        {
-          title: "jonatasgrosman/wav2vec2-large-xlsr-53-english",
-          Updated: "Nov 16, 2022",
-          author: "shihaoi.li"
-        },
-        {
-          title: "gpt2",
-          Updated: "Nov 16, 2022",
-          author: "theone.zhu"
-        },
-        {
-          title: "gpt2",
-          Updated: "Nov 16, 2022",
-          author: "theone.zhu"
-        }
+      ],
+      modelsshow:[
+
       ]
     };
   },
   computed: {
       modelCnt() {
-        return this.modelsArr.length;
-      }
+        return this.modelsshow.length;
+      },
     },
     methods:{
-      demo(data){
-        console.log("right"+data)
+      filtermodel(name){
+        console.log(name);
+       if(name ==""){
+        this.modelsshow = this.modelsArr
+        }else{
+          this.modelsshow = this.modelsArr.filter(item=>item.belong == name)
+        }
       }
     }
 };
@@ -188,103 +196,15 @@ export default {
         }
       }
     }
-    .title-right {
-      display: flex;
-      align-items: center;
-      font-size: 0.875rem;
-      .left {
-        height: 1.875rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border: 0.0625rem solid #ccc;
-        border-radius: 0.9375rem;
-        margin-right: 0.9375rem;
-        padding: 0 0.625rem;
-        span {
-          --tw-text-opacity: 1;
-          color: rgb(29 78 216 / var(--tw-text-opacity));
-          background-color: #ecf1fc;
-          padding: 0 0.3125rem;
-          //   display: inline-block;
-          //   width: 1.875rem;
-          text-align: center;
-        }
-      }
-      .right {
-        height: 1.875rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border: 0.0625rem solid #ccc;
-        border-radius: 0.625rem;
-        padding: 0 0.625rem;
 
-        img {
-          width: 1.25rem;
-        }
-      }
-    }
+
+
   }
-  .list {
-    margin-top: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    .list-item {
-      text-align: left;
-      border: 0.0625rem solid #ccc;
-      padding: 0.625rem 0.5375rem;
-      width: 46%;
-      // margin-top: 0.5rem;
-      border-radius: 0.625rem;
 
-      background-image: linear-gradient(to right, var(--tw-gradient-stops));
-      // border-color: rgb(243 244 246/var(--tw-border-opacity));
-
-      cursor: pointer;
-      //   box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.5);
-      &:hover .name h5 {
-        color: rgba(59, 130, 246, 0.5);
-      }
-      &:hover {
-        background-color: #f3f3f3;
-      }
-      .name {
-        display: flex;
-        align-items: center;
-        margin-bottom: 0.3125rem;
-        h5 {
-          --tw-text-opacity: 1;
-          color: rgb(0 0 0 / var(--tw-text-opacity));
-          font-size: inherit;
-          margin-left: 0.625rem;
-          font-weight: normal;
-        }
-        img {
-          width: 1.25rem;
-        }
-      }
-      .info {
-        --tw-text-opacity: 1;
-        color: rgb(156 163 175 / var(--tw-text-opacity));
-        font-size: 0.875rem;
-        span {
-          &::before {
-            content: "";
-            display: inline-block;
-            width: 0.1875rem;
-            height: 0.1875rem;
-            border-radius: 50%;
-            background-color: #ccc;
-            margin: 0 0.3125rem;
-            margin-bottom: 0.1875rem;
-          }
-        }
-      }
-    }
+  a{
+    color: inherit;
   }
+
 
   .grid-content {
     background: #fefefe;

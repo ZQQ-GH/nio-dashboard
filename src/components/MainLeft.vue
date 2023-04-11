@@ -52,7 +52,7 @@
 <script>
 export default {
   created() {
-    var url = "http://localhost:8090/getallprojects";
+    var url = "/getallprojects";
     this.axios
       .get(url)
       .then(res => {
@@ -70,7 +70,7 @@ export default {
           };
         });
         this.taskList = this.taskList.concat(taskArray);
-
+        this.taskList.sort(t=>t.id)
       })
       .catch(error => console.log(error));
   },
@@ -78,6 +78,7 @@ export default {
   data() {
     return {
       navindex: 0,
+      selectALL:true,
       navList: [
         { id: 10, label: "Tasks", activete: true },
         { id: 20, label: "Libraries", activete: false },
@@ -86,35 +87,14 @@ export default {
 
       taskList: [
         {
-          id: 10,
-          navindex: 0,
-          text: "铜排拉弧",
-          imgurl: require("../assets/imgs/task1.png"),
-          selected:true
-        },
-        {
-          id: 10,
-          navindex: 0,
-          text: "旋变",
-          imgurl: require("../assets/imgs/task1.png"),
-          selected:true
-        },
-        {
-          id: 10,
-          navindex: 0,
-          text: "车辆寿命预估",
-          imgurl: require("../assets/imgs/task.png"),
-          selected:true
-        },
-        {
-          id: 10,
+          id: 1000,
           navindex: 1,
           text: "PyTorch",
           imgurl: require("../assets/imgs/pytorch.png"),
           selected:true
         },
         {
-          id: 10,
+          id: 2000,
           navindex: 1,
           text: "TensorFlow",
           imgurl: require("../assets/imgs/tensorflow.png"),
@@ -133,17 +113,32 @@ export default {
       this.navindex = index;
     },
     taskclick(task){
-      this.taskList.forEach(task1 => {
-        if(task1.navindex == this.navindex){
-          task1.selected = false;
-        }else{
+      // console.log(task);
+
+      if(task.selected&&!this.selectALL){
+        this.taskList.forEach(task1 => {
           task1.selected = true;
-        }
+          this.selectALL = true;
+      });
+      }else{
+        this.taskList.forEach(task1 => {
+          task1.selected = false;
+        // if(task1.navindex == this.navindex){
+        //   task1.selected = false;
+        // }else{
+        //   task1.selected = true;
+        // }
       });
       task.selected = true;
+      this.selectALL =false;
+      }
 
-
-      this.$bus.$emit('hello',123)
+      if(this.selectALL){
+        this.$bus.$emit('filtermodel','')
+      }else{
+        this.$bus.$emit('filtermodel',task.text)
+      }
+      
   
     }
   }
