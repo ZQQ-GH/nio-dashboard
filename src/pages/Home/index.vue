@@ -1,17 +1,12 @@
 <template>
-  <div class="index">
-
-    <Header></Header>
-
-    <main>
-      <MainLeft></MainLeft>
-      <MainRight></MainRight>
-    </main>
+  <div class="main">
+    <MainLeft></MainLeft>
+    <MainRight></MainRight>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
+
 import MainLeft from '@/components/MainLeft.vue';
 import MainRight from '@/components/MainRight.vue';
 export default {
@@ -21,7 +16,6 @@ export default {
     };
   },
   components:{
-    Header,
     MainLeft,
     MainRight
   }
@@ -30,16 +24,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.index {
-  height: 100%;
-  width: 85rem;
-  max-width: 100%;
-  margin: 0 auto;
 
-  main {
+
+.main {
     width: 100%;
     display: flex;
     // justify-content: space-between;
   }
-}
 </style>
