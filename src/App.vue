@@ -21,7 +21,7 @@ export default {
 <style scoped>
 .index {
   height: 100%;
-  width: 85rem;
+  width: 100%;
   max-width: 100%;
   margin: 0 auto;
 }

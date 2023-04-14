@@ -11,23 +11,16 @@ export default new VueRouter({
         {
             path: '/',
             component: Home,
-            meta: {
-                title: 'Home',
-              }
         },
         {
             path: '/test',
             component: vuextest,
-            meta: {
-                title: 'vuextest',
-              }
+
         },
         {
             path: '/Detail',
             component: Detail,
-            meta: {
-                title: 'Detail',
-              }
+            name:'Detail',
         },
 
     ]

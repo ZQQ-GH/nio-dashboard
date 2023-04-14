@@ -1,17 +1,15 @@
 <template>
-  <div>
+  <div class="headerbody">
     <header>
       <div class="header-left">
         <!-- <img
           src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
           alt=""
-        /> -->
-        <img
-          src="@/assets/imgs/nio.jpeg"
-          alt=""
-        />
-        <h1>NIO Model DashBoard</h1>
-
+        />-->
+        <router-link :to="{path: '/'}" class="link">
+          <img src="@/assets/imgs/nio.jpeg" alt />
+          <h1>NIO Model DashBoard</h1>
+        </router-link>
         <div class="ipt-box">
           <input type="text" placeholder="Search tasks,models,reports..." />
           <svg
@@ -29,7 +27,7 @@
             <path
               d="M30 28.59L22.45 21A11 11 0 1 0 21 22.45L28.59 30zM5 14a9 9 0 1 1 9 9a9 9 0 0 1-9-9z"
               fill="currentColor"
-            ></path>
+            />
           </svg>
         </div>
       </div>
@@ -111,7 +109,7 @@
             Datasets</a
           >
         </li>
-      </ul> -->
+      </ul>-->
     </header>
   </div>
 </template>
@@ -121,8 +119,16 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-header {
-  padding: 0 0.9375rem;
+.headerbody{
+align-items: center;
+--tw-border-opacity: 1;
+border-color: rgb(243 244 246/var(--tw-border-opacity));
+border-bottom-width: 1px;
+border-bottom-style: solid;
+  header {
+    margin: 0 auto;
+    width: 95rem;
+  // padding: 0 0.9375rem;
   height: 4rem;
   line-height: 4rem;
   border-bottom: 0.0625rem solid rgb(243 244 246);
@@ -132,14 +138,20 @@ header {
     display: flex;
     align-items: center;
     cursor: pointer;
-    img {
-      width: 2.5rem;
+    .link {
+      display: flex;
+      align-items: center;
+      img {
+        width: 2.5rem;
+      }
+      h1 {
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-left: 0.625rem;
+        color: black;
+      }
     }
-    h1 {
-      font-size: 1.125rem;
-      font-weight: 700;
-      margin-left: 0.625rem;
-    }
+
     .ipt-box {
       width: 24rem;
 
@@ -162,7 +174,6 @@ header {
     }
   }
 
-
   .header-right {
     margin-left: 6.25rem;
     display: flex;
@@ -184,4 +195,6 @@ header {
     }
   }
 }
+}
+
 </style>
