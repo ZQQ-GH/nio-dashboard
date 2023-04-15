@@ -45,7 +45,7 @@
     <el-row :gutter="30">
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="12" v-for="(v, i) in modelsshow" :key="i">
         <!-- <a :href="v.url==''?'#':v.url" :target="v.url==''?'_self':'_blank'"> -->
-        <router-link :to="{ name: 'Detail', query: { id: v.id }}">
+        <router-link :to="{ path: '/Detail', query: { id: v.id }}">
           <div class="grid-content">
             <div class="name">
               <h5>{{ v.name }}</h5>

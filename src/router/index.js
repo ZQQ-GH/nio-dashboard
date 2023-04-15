@@ -6,6 +6,9 @@ Vue.use(VueRouter)
 import Home from '@/pages/Home'
 import vuextest from '@/components/vuextest.vue'
 import Detail from '@/pages/Detail'
+
+
+
 export default new VueRouter({
     routes: [
         {
@@ -20,7 +23,6 @@ export default new VueRouter({
         {
             path: '/Detail',
             component: Detail,
-            name:'Detail',
         },
 
     ]
